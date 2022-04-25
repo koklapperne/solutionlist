@@ -12,9 +12,9 @@ $ git clone https://github.com/koklapperne/solutionlist.git
 Do this before work begins in the local repository
 ```
 At work:
-$ cd "/H/Udvikling/C++/solutionlist"
+$ cd "/H/Udvikling/C++/solutionlists"
 At home:
-$ cd "/D/Programmering/C++/solutionlist"
+$ cd "/D/Programmering/C++/solutionlists"
 $ git pull
 ```
 Add files and changes to files
