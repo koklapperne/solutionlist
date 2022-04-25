@@ -1,8 +1,6 @@
 #pragma once
-// Local headers
-//
 // Namespace decalaration
-namespace StackArrayImplementation {
+namespace QueArrayImplementation {
 	// Populate test data
 	int populateTestData();
 	// Select test person
@@ -18,6 +16,6 @@ namespace StackArrayImplementation {
 	// Print all elements
 	int printStack();
 	// Options
-	int showStackImplementationOptions();
-	int handleStackImplementationOptions();
+	int showQueImplementationOptions();
+	int handleQueImplementationOptions();
 }

@@ -3,6 +3,7 @@
 #include "simplestarrayimplementation.h"
 #include "objectarrayimplimentation.h"
 #include "stackarrayimplementation.h"
+#include "quearrayimplementation.h"
 #include "textuserinterface.h"
 // Standard library headers
 #include <string>
@@ -14,7 +15,7 @@ int showArrayImplimentationOptions() {
 	std::cout << "1. Simplest implementation" << std::endl;
 	std::cout << "2. Object implementation" << std::endl;
 	std::cout << "3. Stack implementation" << std::endl;
-	std::cout << "4. #" << std::endl;
+	std::cout << "4. Que implementation" << std::endl;
 	std::cout << "5. #" << std::endl;
 	std::cout << "6. #" << std::endl;
 	std::cout << "7. #" << std::endl;
@@ -50,7 +51,7 @@ int handleArrayImplimentationOptions() {
 			appAction = StackArrayImplementation::handleStackImplementationOptions();
 			break;
 		case 4:
-			appAction = TextUserInterface::writeAppNoOption();
+			appAction = QueArrayImplementation::handleQueImplementationOptions();
 			break;
 		case 5:
 			appAction = TextUserInterface::writeAppNoOption();

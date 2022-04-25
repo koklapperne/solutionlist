@@ -1,5 +1,5 @@
 // Local headers
-#include "stackarrayimplementation.h"
+#include "quearrayimplementation.h"
 #include "person.h"
 #include "textuserinterface.h"
 // Standard library headers
@@ -8,14 +8,13 @@
 // Global integer constant holding the size of the stack
 const int max = 10;
 // Global integer variable holding the top of the stack
-int stackTop;
+int queTop;
 // Global test data structure declaration
-person testStackPersons[max];
+person testQuePersons[max];
 // Global stack data structure declaration
-person personStack[max];
-// Populate test data
-int StackArrayImplementation::populateTestData() {
-	// 25-04-2022 07.09
+person personQue[max];
+int QueArrayImplementation::populateTestData() {
+	// 25-04-2022 18.50
 	// Declarations
 	int appAction;
 	person newTestperson;
@@ -23,34 +22,34 @@ int StackArrayImplementation::populateTestData() {
 	appAction = 0;
 	// 0
 	newTestperson.update("ABE", "Professor", 55);
-	testStackPersons[0] = newTestperson;
+	testQuePersons[0] = newTestperson;
 	// 1
 	newTestperson.update("TIM", "Student", 21);
-	testStackPersons[1] = newTestperson;
+	testQuePersons[1] = newTestperson;
 	// 2
 	newTestperson.update("ZOE", "Professor", 21);
-	testStackPersons[2] = newTestperson;
+	testQuePersons[2] = newTestperson;
 	// 3
 	newTestperson.update("HAL", "Student", 21);
-	testStackPersons[3] = newTestperson;
+	testQuePersons[3] = newTestperson;
 	// 4
 	newTestperson.update("SAL", "Student", 20);
-	testStackPersons[4] = newTestperson;
+	testQuePersons[4] = newTestperson;
 	// 5
 	newTestperson.update("MIT", "Teacher", 35);
-	testStackPersons[5] = newTestperson;
+	testQuePersons[5] = newTestperson;
 	// 6
 	newTestperson.update("ITM", "Student", 21);
-	testStackPersons[6] = newTestperson;
+	testQuePersons[6] = newTestperson;
 	// 7
 	newTestperson.update("LEO", "Teacher", 32);
-	testStackPersons[7] = newTestperson;
+	testQuePersons[7] = newTestperson;
 	// 8
 	newTestperson.update("ZED", "Student", 24);
-	testStackPersons[8] = newTestperson;
+	testQuePersons[8] = newTestperson;
 	// 9
 	newTestperson.update("BEA", "Student", 21);
-	testStackPersons[9] = newTestperson;
+	testQuePersons[9] = newTestperson;
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
 	std::cout << "Test data populated" << std::endl;
@@ -58,8 +57,8 @@ int StackArrayImplementation::populateTestData() {
 	appAction = TextUserInterface::writeActionSeperator();
 	return 0;
 }
-int StackArrayImplementation::selectPersonFromTestData() {
-	// 21-04-2022 10.45
+int QueArrayImplementation::selectPersonFromTestData() {
+	// 25-04-2022 18.50
 	int appAction;
 	int i;
 	int selection;
@@ -71,7 +70,7 @@ int StackArrayImplementation::selectPersonFromTestData() {
 	appAction = TextUserInterface::writeSelectionHighlighter();
 	// Inspect all elements of the list
 	for (i = 0; i < 10; i++) {
-		std::cout << i << ": " << testStackPersons[i].returnName() << std::endl;
+		std::cout << i << ": " << testQuePersons[i].returnName() << std::endl;
 	}
 	//
 	std::cout << "Enter selection: ";
@@ -83,15 +82,15 @@ int StackArrayImplementation::selectPersonFromTestData() {
 	return selection;
 }
 // Initialize
-int StackArrayImplementation::initializeStack() {
-	// 25-04-2022 08.12
-	stackTop = max;
+int QueArrayImplementation::initializeStack() {
+	// 25-04-2022 18.50
+	queTop = max;
 	//
 	return 0;
 }
 // Push
-int StackArrayImplementation::pushElement() {
-	// 25-04-2022 11.00
+int QueArrayImplementation::pushElement() {
+	// 25-04-2022 18.50
 	// Declarations
 	int appAction;
 	int selectedIndex;
@@ -101,15 +100,15 @@ int StackArrayImplementation::pushElement() {
 	person selectedPerson;
 	// Select test person
 	selectedIndex = selectPersonFromTestData();
-	selectedPerson = testStackPersons[selectedIndex];
+	selectedPerson = testQuePersons[selectedIndex];
 	// Push test person on to the stack
-	if (stackTop < 0) {
+	if (queTop < 0) {
 		std::cout << "Stack overflow!" << std::endl;
 	}
 	else {
-		stackTop--;
-		personStack[stackTop] = selectedPerson;
-		std::cout << "Top: " << stackTop << std::endl;
+		queTop--;
+		personQue[queTop] = selectedPerson;
+		std::cout << "Top: " << queTop << std::endl;
 		std::cout << selectedPerson.returnName() << " pushed to the stack" << std::endl;
 	}
 	//
@@ -118,22 +117,22 @@ int StackArrayImplementation::pushElement() {
 	return 0;
 }
 // Pop
-int StackArrayImplementation::popElement() {
-	// 25-04-2022 10.09
+int QueArrayImplementation::popElement() {
+	// 25-04-2022 18.50
 	int appAction;
 	//
 	appAction = 0;
 	person topPerson;
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
-	if (stackTop > max-1) {
+	if (queTop > max - 1) {
 		std::cout << "Stack underflow!" << std::endl;
 	}
 	else {
-		std::cout << "Top: " << stackTop << std::endl;
-		std::cout << personStack[stackTop].returnName() << " popped from the stack" << std::endl;
-		personStack[stackTop] = topPerson;
-		stackTop++;
+		std::cout << "Top: " << queTop << std::endl;
+		std::cout << personQue[queTop].returnName() << " popped from the stack" << std::endl;
+		personQue[queTop] = topPerson;
+		queTop++;
 	}
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
@@ -141,27 +140,27 @@ int StackArrayImplementation::popElement() {
 	return 0;
 }
 // Print top element
-int StackArrayImplementation::peek() {
-	// 25-04-2022 10.27
+int QueArrayImplementation::peek() {
+	// 25-04-2022 18.50
 	int appAction;
 	//
 	appAction = 0;
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
-	if (stackTop >= max) {
+	if (queTop >= max) {
 		std::cout << "Stack is empty" << std::endl;
 	}
 	else {
-		std::cout << "Top: " << stackTop << std::endl;
-		std::cout << personStack[stackTop].returnName() << std::endl;
+		std::cout << "Top: " << queTop << std::endl;
+		std::cout << personQue[queTop].returnName() << std::endl;
 	}
 	appAction = TextUserInterface::writeSelectionHighlighter();
 	appAction = TextUserInterface::writeActionSeperator();
 	return 0;
 }
 // Print all elements
-int StackArrayImplementation::printStack() {
-	// 25-04-2022 08.52
+int QueArrayImplementation::printStack() {
+	// 25-04-2022 18.50
 	int appAction;
 	int i;
 	//
@@ -171,7 +170,7 @@ int StackArrayImplementation::printStack() {
 	appAction = TextUserInterface::writeSelectionHighlighter();
 	// Inspect all elements of the list
 	for (i = 0; i < 10; i++) {
-		std::cout << i << ": " << personStack[i].returnName() << std::endl;
+		std::cout << i << ": " << personQue[i].returnName() << std::endl;
 	}
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
@@ -179,14 +178,14 @@ int StackArrayImplementation::printStack() {
 	return 0;
 }
 // Options
-int StackArrayImplementation::showStackImplementationOptions() {
-	// 21-04-2022 19.30
+int QueArrayImplementation::showQueImplementationOptions() {
+	// 25-04-2022 18.50
 	int appAction = 0;
 	std::cout << "1. Popultate test data" << std::endl;
-	std::cout << "2. Push an element to the stack" << std::endl;
-	std::cout << "3. Pop an element from the stack" << std::endl;
-	std::cout << "4. Print the top of the stack " << std::endl;
-	std::cout << "5. Print stack" << std::endl;
+	std::cout << "2. Push an element to the que" << std::endl;
+	std::cout << "3. Pop an element from the que" << std::endl;
+	std::cout << "4. Print the bottom of the que " << std::endl;
+	std::cout << "5. Print que" << std::endl;
 	std::cout << "6. #" << std::endl;
 	std::cout << "7. #" << std::endl;
 	std::cout << "8. #" << std::endl;
@@ -195,8 +194,8 @@ int StackArrayImplementation::showStackImplementationOptions() {
 	//
 	return 0;
 }
-int StackArrayImplementation::handleStackImplementationOptions() {
-	// 25-04-2022 07.55
+int QueArrayImplementation::handleQueImplementationOptions() {
+	// 25-04-2022 18.50
 	int appAction = 0;
 	int choise = 99;
 	bool stop = false;
@@ -204,8 +203,8 @@ int StackArrayImplementation::handleStackImplementationOptions() {
 	appAction = initializeStack();
 	// Operations 
 	while (stop == false) {
-		appAction = TextUserInterface::writeSubFunctionalityInformation("--Stack array implimentation--", "V.00.01");
-		appAction = showStackImplementationOptions();
+		appAction = TextUserInterface::writeSubFunctionalityInformation("--Que array implimentation--", "V.00.01");
+		appAction = showQueImplementationOptions();
 		appAction = TextUserInterface::writeActionSeperator();
 		std::cout << "Enter choise: ";
 		std::cin >> choise;
@@ -214,19 +213,24 @@ int StackArrayImplementation::handleStackImplementationOptions() {
 		// Handle user input
 		switch (choise) {
 		case 1:
-			appAction = populateTestData();
+			appAction = TextUserInterface::writeAppNoOption();
+			//appAction = populateTestData();
 			break;
 		case 2:
-			appAction = pushElement();
+			appAction = TextUserInterface::writeAppNoOption();
+			//appAction = pushElement();
 			break;
 		case 3:
-			appAction = popElement();
+			appAction = TextUserInterface::writeAppNoOption();
+			//appAction = popElement();
 			break;
 		case 4:
-			appAction = peek();
+			appAction = TextUserInterface::writeAppNoOption();
+			//appAction = peek();
 			break;
 		case 5:
-			appAction = printStack();
+			appAction = TextUserInterface::writeAppNoOption();
+			//appAction = printStack();
 			break;
 		case 6:
 			appAction = TextUserInterface::writeAppNoOption();

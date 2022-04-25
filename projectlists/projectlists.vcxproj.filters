@@ -39,6 +39,9 @@
     <ClCompile Include="stackarrayimplementation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="quearrayimplementation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="subfunctionality.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="stackarrayimplementation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="quearrayimplementation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
