@@ -39,7 +39,7 @@
     <ClCompile Include="stackarrayimplementation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="quearrayimplementation.cpp">
+    <ClCompile Include="queuearrayimplementation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,7 +65,7 @@
     <ClInclude Include="stackarrayimplementation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="quearrayimplementation.h">
+    <ClInclude Include="queuearrayimplementation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
