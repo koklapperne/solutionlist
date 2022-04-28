@@ -12,7 +12,7 @@ $ git clone https://github.com/koklapperne/solutionlist.git
 Do this before work begins in the local repository
 ```
 At work:
-$ cd "/H/Udvikling/C++/solutionlists"
+$ cd "/H/Udvikling/C++/solutionlist"
 At home:
 $ cd "/D/Programmering/C++/solutionlists"
 $ git pull
