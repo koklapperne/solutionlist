@@ -1,14 +1,15 @@
 // Local headers
 #include "textuserinterface.h"
 #include "arrayimplimentation.h"
+#include "linkedlistimplementation.h"
 // Standard library headers
 #include <iostream>
 // Application options
 int showAppOptions() {
-	// 20-04-2022 18.42
+	// 28-04-2022 14.49
 	int appAction = 0;
-	std::cout << "1. Array implimentation" << std::endl;
-	std::cout << "2. #" << std::endl;
+	std::cout << "1. Array implementation" << std::endl;
+	std::cout << "2. Linked list implementation " << std::endl;
 	std::cout << "3. #" << std::endl;
 	std::cout << "4. #" << std::endl;
 	std::cout << "5. #" << std::endl;
@@ -41,7 +42,7 @@ int handleAppOptions() {
 			appAction = handleArrayImplimentationOptions();
 			break;
 		case 2:
-			appAction = TextUserInterface::writeAppNoOption();
+			appAction = handleLinkedListImplementationOptions();
 			break;
 		case 3:
 			appAction = TextUserInterface::writeAppNoOption();
@@ -87,4 +88,3 @@ int main()
 	appAction = handleAppOptions();
 	appAction = TextUserInterface::preventConsoleClose();
 }
-

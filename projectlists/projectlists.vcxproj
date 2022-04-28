@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="arrayimplimentation.cpp" />
+    <ClCompile Include="linkedlistimplementation.cpp" />
     <ClCompile Include="objectarrayimplimentation.cpp" />
     <ClCompile Include="person.cpp" />
     <ClCompile Include="projectlists.cpp" />
@@ -151,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="arrayimplimentation.h" />
+    <ClInclude Include="linkedlistimplementation.h" />
     <ClInclude Include="objectarrayimplimentation.h" />
     <ClInclude Include="person.h" />
     <ClInclude Include="queuearrayimplementation.h" />

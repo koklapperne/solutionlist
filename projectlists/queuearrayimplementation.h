@@ -12,7 +12,7 @@ namespace QueueArrayImplementation {
 	// Dequeue
 	int dequeueElement();
 	// Front
-	int front();
+	int frontQueue();
 	// Print all elements
 	int printQueue();
 	// Options

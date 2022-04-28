@@ -9,9 +9,8 @@
 const int max = 10;
 const int queueCapacity=10;
 // Global integer variable holding the top of the stack
-int queueTop; // Marked for deletion
-int queueFront;
-int queueRear;
+int queueFront; // First element of the list!
+int queueRear; // Last element of the list!
 // Global test data structure declaration
 person testQueuePersons[queueCapacity];
 // Global stack data structure declaration
@@ -108,7 +107,7 @@ int QueueArrayImplementation::enqueueElement() {
 	// Enqueue test person 
 	// Check if the queue is full
 	if (queueRear >= queueCapacity) {
-		std::cout << "Queue is full" << std::endl;
+		std::cout << "Queue overflow" << std::endl;
 	}
 	else {
 		personQueue[queueRear] = selectedPerson;
@@ -128,8 +127,8 @@ int QueueArrayImplementation::dequeueElement() {
 	person rearPerson;
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
-	if (queueTop > max - 1) {
-		std::cout << "Queue is empty" << std::endl;
+	if (queueRear <= 0) {
+		std::cout << "Queue underflow" << std::endl;
 	}
 	else {
 		std::cout << "Rear: " << queueRear << std::endl;
@@ -143,19 +142,19 @@ int QueueArrayImplementation::dequeueElement() {
 	return 0;
 }
 // Print front element
-int QueueArrayImplementation::front() {
+int QueueArrayImplementation::frontQueue() {
 	// 25-04-2022 18.50
 	int appAction;
 	//
 	appAction = 0;
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
-	if (queueTop >= max) {
-		std::cout << "Stack is empty" << std::endl;
+	if (queueRear <=0) {
+		std::cout << "Queue underflow" << std::endl;
 	}
 	else {
-		std::cout << "Top: " << queueTop << std::endl;
-		std::cout << personQueue[queueTop].returnName() << std::endl;
+		std::cout << "Rear: " << queueRear << std::endl;
+		std::cout << personQueue[queueRear].returnName() << std::endl;
 	}
 	appAction = TextUserInterface::writeSelectionHighlighter();
 	appAction = TextUserInterface::writeActionSeperator();
@@ -172,7 +171,7 @@ int QueueArrayImplementation::printQueue() {
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
 	// Inspect all elements of the list
-	for (i = 0; i < 10; i++) {
+	for (i = 0; i < queueCapacity; i++) {
 		std::cout << i << ": " << personQueue[i].returnName() << std::endl;
 	}
 	//
@@ -220,20 +219,20 @@ int QueueArrayImplementation::handleQueueImplementationOptions() {
 			appAction = populateTestData();
 			break;
 		case 2:
-			appAction = TextUserInterface::writeAppNoOption();
-			//appAction = pushElement();
+			//appAction = TextUserInterface::writeAppNoOption();
+			appAction = enqueueElement();
 			break;
 		case 3:
-			appAction = TextUserInterface::writeAppNoOption();
-			//appAction = popElement();
+			//appAction = TextUserInterface::writeAppNoOption();
+			appAction = dequeueElement();
 			break;
 		case 4:
 			appAction = TextUserInterface::writeAppNoOption();
 			//appAction = peek();
 			break;
 		case 5:
-			appAction = TextUserInterface::writeAppNoOption();
-			//appAction = printStack();
+			//appAction = TextUserInterface::writeAppNoOption();
+			appAction = printQueue();
 			break;
 		case 6:
 			appAction = TextUserInterface::writeAppNoOption();
