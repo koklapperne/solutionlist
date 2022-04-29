@@ -131,10 +131,10 @@ int QueueArrayImplementation::dequeueElement() {
 		std::cout << "Queue underflow" << std::endl;
 	}
 	else {
+		queueRear--;
 		std::cout << "Rear: " << queueRear << std::endl;
 		std::cout << personQueue[queueRear].returnName() << " dequeued from the queue" << std::endl;
 		personQueue[queueRear] = rearPerson;
-		queueRear--;
 	}
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
