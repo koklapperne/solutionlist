@@ -45,6 +45,9 @@
     <ClCompile Include="linkedlistimplementation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="simplestlinkedlistimplementation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="subfunctionality.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="linkedlistimplementation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="simplestlinkedlistimplementation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

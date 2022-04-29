@@ -146,6 +146,7 @@
     <ClCompile Include="projectlists.cpp" />
     <ClCompile Include="queuearrayimplementation.cpp" />
     <ClCompile Include="simplestarrayimplementation.cpp" />
+    <ClCompile Include="simplestlinkedlistimplementation.cpp" />
     <ClCompile Include="stackarrayimplementation.cpp" />
     <ClCompile Include="subfunctionality.cpp" />
     <ClCompile Include="textuserinterface.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="person.h" />
     <ClInclude Include="queuearrayimplementation.h" />
     <ClInclude Include="simplestarrayimplementation.h" />
+    <ClInclude Include="simplestlinkedlistimplementation.h" />
     <ClInclude Include="stackarrayimplementation.h" />
     <ClInclude Include="subfunctionality.h" />
     <ClInclude Include="textuserinterface.h" />
