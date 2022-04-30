@@ -9,6 +9,8 @@ namespace StackArrayImplementation {
 	int selectPersonFromTestData();
 	// Initialize
 	int initializeStack();
+	// Is empty
+	bool stackIsEmpty();
 	// Push
 	int pushElement();
 	// Pop
@@ -16,7 +18,7 @@ namespace StackArrayImplementation {
 	// Peek
 	int peek();
 	// Print all elements
-	int printStack();
+	int printArray();
 	// Options
 	int showStackImplementationOptions();
 	int handleStackImplementationOptions();

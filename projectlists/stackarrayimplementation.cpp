@@ -84,11 +84,26 @@ int StackArrayImplementation::selectPersonFromTestData() {
 }
 // Initialize
 int StackArrayImplementation::initializeStack() {
-	// 25-04-2022 08.12
-	stackTop = max;
+	// 30-04-2022 11.07
+	stackTop = -1;
 	//
 	return 0;
 }
+// Is empty
+bool StackArrayImplementation::stackIsEmpty() {
+	// 30-04-2022 11.13
+	bool result;
+	//
+	result = true;
+	if (stackTop == -1) {
+		result = true;
+	}
+	else {
+		result = false;
+	}
+	//
+	return result;
+};
 // Push
 int StackArrayImplementation::pushElement() {
 	// 25-04-2022 11.00
@@ -103,13 +118,16 @@ int StackArrayImplementation::pushElement() {
 	selectedIndex = selectPersonFromTestData();
 	selectedPerson = testStackPersons[selectedIndex];
 	// Push test person on to the stack
-	if (stackTop < 0) {
-		std::cout << "Stack overflow!" << std::endl;
+	if (stackTop == max-1) {
+		std::cout << "Stack overflow, stack is full" << std::endl;
 	}
 	else {
-		stackTop--;
+		stackTop++;
 		personStack[stackTop] = selectedPerson;
-		std::cout << "Top: " << stackTop << std::endl;
+		// Print top
+		// Print front and rear
+		appAction = TextUserInterface::writeSelectionHighlighter();
+		std::cout << "stack top: " << stackTop << std::endl;
 		std::cout << selectedPerson.returnName() << " pushed to the stack" << std::endl;
 	}
 	//
@@ -123,17 +141,18 @@ int StackArrayImplementation::popElement() {
 	int appAction;
 	//
 	appAction = 0;
-	person topPerson;
+	person emptyPerson;
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
-	if (stackTop > max-1) {
-		std::cout << "Stack underflow!" << std::endl;
+	if (stackIsEmpty()==true) {
+		std::cout << "Stack underflow, stack is empty" << std::endl;
 	}
 	else {
-		std::cout << "Top: " << stackTop << std::endl;
+		std::cout << "Stack top: " << stackTop << std::endl;
 		std::cout << personStack[stackTop].returnName() << " popped from the stack" << std::endl;
-		personStack[stackTop] = topPerson;
-		stackTop++;
+		personStack[stackTop] = emptyPerson;
+		stackTop--;
+		
 	}
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
@@ -148,8 +167,8 @@ int StackArrayImplementation::peek() {
 	appAction = 0;
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
-	if (stackTop >= max) {
-		std::cout << "Stack is empty" << std::endl;
+	if (stackTop < 0 ) {
+		std::cout << "Stack underflow, stack is empty" << std::endl;
 	}
 	else {
 		std::cout << "Top: " << stackTop << std::endl;
@@ -160,7 +179,7 @@ int StackArrayImplementation::peek() {
 	return 0;
 }
 // Print all elements
-int StackArrayImplementation::printStack() {
+int StackArrayImplementation::printArray() {
 	// 25-04-2022 08.52
 	int appAction;
 	int i;
@@ -226,7 +245,7 @@ int StackArrayImplementation::handleStackImplementationOptions() {
 			appAction = peek();
 			break;
 		case 5:
-			appAction = printStack();
+			appAction = printArray();
 			break;
 		case 6:
 			appAction = TextUserInterface::writeAppNoOption();

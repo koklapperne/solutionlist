@@ -6,15 +6,15 @@
 #include <string>
 #include <iostream>
 // Global integer constant holding the size of the queue
-const int max = 10;
 const int queueCapacity=10;
 // Global integer variable holding the top of the stack
-int queueFront; // First element of the list!
-int queueRear; // Last element of the list!
+int queueRear; // Last element of the queue!
+int queueFront; //  First element of the queue!
 // Global test data structure declaration
 person testQueuePersons[queueCapacity];
 // Global stack data structure declaration
-person personQueue[max];
+person personQueue[queueCapacity];
+// Test data
 int QueueArrayImplementation::populateTestData() {
 	// 25-04-2022 18.50
 	// Declarations
@@ -86,14 +86,30 @@ int QueueArrayImplementation::selectPersonFromTestData() {
 // Initialize
 int QueueArrayImplementation::initializeQueue() {
 	// 25-04-2022 18.50
-	queueFront = 0;
-	queueRear = 0;
+	queueFront = -1;
+	queueRear = -1;
 	//
 	return 0;
+}
+// Is empty
+bool QueueArrayImplementation::queueIsEmpty() {
+	// 30-04-2022 08.14
+	bool result;
+	//
+	result = false;
+	if (queueFront == -1 && queueRear == -1) {
+		result = true;
+	}
+	else {
+		result = false;
+	}
+	//
+	return result;
 }
 // Enqueue
 int QueueArrayImplementation::enqueueElement() {
 	// 25-04-2022 18.50
+	// Adding elements to the queue, can only be done at the rear
 	// Declarations
 	int appAction;
 	int selectedIndex;
@@ -104,14 +120,21 @@ int QueueArrayImplementation::enqueueElement() {
 	// Select test person
 	selectedIndex = selectPersonFromTestData();
 	selectedPerson = testQueuePersons[selectedIndex];
-	// Enqueue test person 
+	// Print front and rear
+	appAction = TextUserInterface::writeSelectionHighlighter();
+	std::cout << "Queue Rear...: " << queueRear << std::endl;
+	std::cout << "Queue Front..: " << queueFront << std::endl;
 	// Check if the queue is full
-	if (queueRear >= queueCapacity) {
-		std::cout << "Queue overflow" << std::endl;
+	if (queueRear == queueCapacity-1) {
+		std::cout << "Queue overflow, queue is full" << std::endl;
 	}
 	else {
-		personQueue[queueRear] = selectedPerson;
+		if (queueFront == -1) {
+			queueFront = 0;
+		}
 		queueRear++;
+		personQueue[queueRear] = selectedPerson;
+		std::cout << selectedPerson.returnName() << " added to the queue" << std::endl;
 	}
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
@@ -121,20 +144,33 @@ int QueueArrayImplementation::enqueueElement() {
 // Dequeue
 int QueueArrayImplementation::dequeueElement() {
 	// 25-04-2022 18.50
+	// Removing elements from the queue, can only be done at the front
+	// Declarations
 	int appAction;
-	//
+	// Initializations
 	appAction = 0;
-	person rearPerson;
+	person emptyPerson;
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
-	if (queueRear <= 0) {
-		std::cout << "Queue underflow" << std::endl;
+	// Print front and rear
+	std::cout << "Queue Rear...: " << queueRear << std::endl;
+	std::cout << "Queue Front..: " << queueFront << std::endl;
+	if (queueIsEmpty()==true) {
+		std::cout << "Queue underflow, queue empty" << std::endl;
 	}
 	else {
-		queueRear--;
-		std::cout << "Rear: " << queueRear << std::endl;
-		std::cout << personQueue[queueRear].returnName() << " dequeued from the queue" << std::endl;
-		personQueue[queueRear] = rearPerson;
+		
+		if (queueFront == queueRear) {
+			queueRear = -1;
+			queueFront = -1;
+		}
+		else {
+			personQueue[queueFront] = emptyPerson;
+			queueFront++;
+			personQueue[queueFront] = emptyPerson;
+			
+		}
+		
 	}
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
@@ -150,7 +186,7 @@ int QueueArrayImplementation::frontQueue() {
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
 	if (queueRear <=0) {
-		std::cout << "Queue underflow" << std::endl;
+		std::cout << "Queue underflow, queue empty" << std::endl;
 	}
 	else {
 		std::cout << "Rear: " << queueRear << std::endl;
@@ -161,7 +197,7 @@ int QueueArrayImplementation::frontQueue() {
 	return 0;
 }
 // Print all elements
-int QueueArrayImplementation::printQueue() {
+int QueueArrayImplementation::printArray() {
 	// 25-04-2022 18.50
 	int appAction;
 	int i;
@@ -184,10 +220,10 @@ int QueueArrayImplementation::showQueueImplementationOptions() {
 	// 25-04-2022 18.50
 	int appAction = 0;
 	std::cout << "1. Popultate test data" << std::endl;
-	std::cout << "2. Enqueue an element to the que" << std::endl;
-	std::cout << "3. Dequeue an element from the que" << std::endl;
-	std::cout << "4. Print the front of the que " << std::endl;
-	std::cout << "5. Print que" << std::endl;
+	std::cout << "2. Enqueue an element to the queue" << std::endl;
+	std::cout << "3. Dequeue an element from the queue" << std::endl;
+	std::cout << "4. Print the front of the queue" << std::endl;
+	std::cout << "5. Print array" << std::endl;
 	std::cout << "6. #" << std::endl;
 	std::cout << "7. #" << std::endl;
 	std::cout << "8. #" << std::endl;
@@ -225,14 +261,14 @@ int QueueArrayImplementation::handleQueueImplementationOptions() {
 		case 3:
 			//appAction = TextUserInterface::writeAppNoOption();
 			appAction = dequeueElement();
+			//appAction = printArray();
 			break;
 		case 4:
 			appAction = TextUserInterface::writeAppNoOption();
-			//appAction = peek();
 			break;
 		case 5:
 			//appAction = TextUserInterface::writeAppNoOption();
-			appAction = printQueue();
+			appAction = printArray();
 			break;
 		case 6:
 			appAction = TextUserInterface::writeAppNoOption();

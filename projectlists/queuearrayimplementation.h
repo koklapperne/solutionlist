@@ -7,6 +7,8 @@ namespace QueueArrayImplementation {
 	int selectPersonFromTestData();
 	// Initialize
 	int initializeQueue();
+	// Is empty
+	bool queueIsEmpty();
 	// Enqueue
 	int enqueueElement();
 	// Dequeue
@@ -14,7 +16,7 @@ namespace QueueArrayImplementation {
 	// Front
 	int frontQueue();
 	// Print all elements
-	int printQueue();
+	int printArray();
 	// Options
 	int showQueueImplementationOptions();
 	int handleQueueImplementationOptions();
