@@ -9,6 +9,8 @@ namespace QueueArrayImplementation {
 	int initializeQueue();
 	// Is empty
 	bool queueIsEmpty();
+	// Is full
+	bool queueIsFull();
 	// Enqueue
 	int enqueueElement();
 	// Dequeue

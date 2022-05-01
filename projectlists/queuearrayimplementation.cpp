@@ -106,6 +106,21 @@ bool QueueArrayImplementation::queueIsEmpty() {
 	//
 	return result;
 }
+// Is full
+bool QueueArrayImplementation::queueIsFull() {
+	// 01-05-2022 08.28
+	bool result;
+	//
+	result = false;
+	if (queueRear == queueCapacity-1) {
+		result = true;
+	}
+	else {
+		result = false;
+	}
+	//
+	return result;
+}
 // Enqueue
 int QueueArrayImplementation::enqueueElement() {
 	// 25-04-2022 18.50
@@ -125,7 +140,7 @@ int QueueArrayImplementation::enqueueElement() {
 	std::cout << "Queue Rear...: " << queueRear << std::endl;
 	std::cout << "Queue Front..: " << queueFront << std::endl;
 	// Check if the queue is full
-	if (queueRear == queueCapacity-1) {
+	if (queueIsFull()==true) {
 		std::cout << "Queue overflow, queue is full" << std::endl;
 	}
 	else {
@@ -160,15 +175,13 @@ int QueueArrayImplementation::dequeueElement() {
 	}
 	else {
 		
-		if (queueFront == queueRear) {
+		if (queueFront > queueRear) {
 			queueRear = -1;
 			queueFront = -1;
 		}
 		else {
 			personQueue[queueFront] = emptyPerson;
 			queueFront++;
-			personQueue[queueFront] = emptyPerson;
-			
 		}
 		
 	}
@@ -179,13 +192,13 @@ int QueueArrayImplementation::dequeueElement() {
 }
 // Print front element
 int QueueArrayImplementation::frontQueue() {
-	// 25-04-2022 18.50
+	// 01-05-2022 08.41
 	int appAction;
 	//
 	appAction = 0;
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
-	if (queueRear <=0) {
+	if (queueIsEmpty()==true) {
 		std::cout << "Queue underflow, queue empty" << std::endl;
 	}
 	else {

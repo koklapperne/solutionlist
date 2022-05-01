@@ -205,7 +205,7 @@ int StackArrayImplementation::showStackImplementationOptions() {
 	std::cout << "2. Push an element to the stack" << std::endl;
 	std::cout << "3. Pop an element from the stack" << std::endl;
 	std::cout << "4. Print the top of the stack " << std::endl;
-	std::cout << "5. Print stack" << std::endl;
+	std::cout << "5. Print array" << std::endl;
 	std::cout << "6. #" << std::endl;
 	std::cout << "7. #" << std::endl;
 	std::cout << "8. #" << std::endl;

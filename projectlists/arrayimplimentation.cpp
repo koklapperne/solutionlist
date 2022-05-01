@@ -15,8 +15,8 @@ int showArrayImplimentationOptions() {
 	std::cout << "1. Simplest implementation" << std::endl;
 	std::cout << "2. Object implementation" << std::endl;
 	std::cout << "3. Stack implementation" << std::endl;
-	std::cout << "4. Queue implementation" << std::endl;
-	std::cout << "5. #" << std::endl;
+	std::cout << "4. Linear queue implementation" << std::endl;
+	std::cout << "5. Circular queue implementation" << std::endl;
 	std::cout << "6. #" << std::endl;
 	std::cout << "7. #" << std::endl;
 	std::cout << "8. #" << std::endl;
