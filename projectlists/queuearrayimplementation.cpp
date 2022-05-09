@@ -12,11 +12,11 @@ int queueRear; // Last element of the queue!
 int queueFront; //  First element of the queue!
 // Global test data structure declaration
 person testQueuePersons[queueCapacity];
-// Global stack data structure declaration
+// Global queue data structure declaration
 person personQueue[queueCapacity];
 // Test data
 int QueueArrayImplementation::populateTestData() {
-	// 25-04-2022 18.50
+	// 09-05-2022 09.11
 	// Declarations
 	int appAction;
 	person newTestperson;
@@ -108,7 +108,7 @@ bool QueueArrayImplementation::queueIsEmpty() {
 }
 // Is full
 bool QueueArrayImplementation::queueIsFull() {
-	// 01-05-2022 08.28
+	// 30-04-2022 08.28
 	bool result;
 	//
 	result = false;

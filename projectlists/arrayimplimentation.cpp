@@ -4,6 +4,7 @@
 #include "objectarrayimplimentation.h"
 #include "stackarrayimplementation.h"
 #include "queuearrayimplementation.h"
+#include "queuecirculararrayimplementation.h"
 #include "textuserinterface.h"
 // Standard library headers
 #include <string>
@@ -26,7 +27,7 @@ int showArrayImplimentationOptions() {
 	return 0;
 }
 int handleArrayImplimentationOptions() {
-	// 21-04-2022 06.45
+	// 09-05-2022 08.57
 	int appAction = 0;
 	int choise = 99;
 	bool stop = false;
@@ -54,7 +55,7 @@ int handleArrayImplimentationOptions() {
 			appAction = QueueArrayImplementation::handleQueueImplementationOptions();
 			break;
 		case 5:
-			appAction = TextUserInterface::writeAppNoOption();
+			QueueCircularArrayImplementation::handleQueueCircularArrayImplementationOptions();
 			break;
 		case 6:
 			appAction = TextUserInterface::writeAppNoOption();
