@@ -134,7 +134,7 @@ int QueueCircularArrayImplementation::enqueueElement() {
 	person selectedPerson;
 	// Select test person
 	selectedIndex = selectPersonFromTestData();
-	selectedPerson = personQueueCircular[selectedIndex];
+	selectedPerson = testQueueCircularPersons[selectedIndex];
 	// Print front and rear
 	appAction = TextUserInterface::writeSelectionHighlighter();
 	std::cout << "Queue Rear...: " << queueCircularRear << std::endl;
@@ -168,8 +168,8 @@ int QueueCircularArrayImplementation::dequeueElement() {
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
 	// Print front and rear
-	std::cout << "Queue Rear...: " << queueCircularRear << std::endl;
 	std::cout << "Queue Front..: " << queueCircularFront << std::endl;
+	std::cout << "Queue Rear...: " << queueCircularRear << std::endl;
 	if (queueIsEmpty() == true) {
 		std::cout << "Queue underflow, queue empty" << std::endl;
 	}
@@ -180,6 +180,7 @@ int QueueCircularArrayImplementation::dequeueElement() {
 			queueCircularFront = -1;
 		}
 		else {
+			std::cout << personQueueCircular[queueCircularFront].returnName() << " dequeued from the queue" << std::endl;
 			personQueueCircular[queueCircularFront] = emptyPerson;
 			queueCircularFront = (queueCircularFront + 1) % queueCircularCapacity;
 		}
@@ -200,6 +201,9 @@ int QueueCircularArrayImplementation::printArray() {
 	i = 0;
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
+	// Print front and rear
+	std::cout << "Queue Rear...: " << queueCircularRear << std::endl;
+	std::cout << "Queue Front..: " << queueCircularFront << std::endl;
 	// Inspect all elements of the list
 	for (i = 0; i < queueCircularCapacity; i++) {
 		std::cout << i << ": " << personQueueCircular[i].returnName() << std::endl;
@@ -245,24 +249,24 @@ int QueueCircularArrayImplementation::handleQueueCircularArrayImplementationOpti
 		// Handle user input
 		switch (choise) {
 		case 1:
-			appAction = TextUserInterface::writeAppNoOption();
-			//appAction = populateTestData();
+			//appAction = TextUserInterface::writeAppNoOption();
+			appAction = populateTestData();
 			break;
 		case 2:
-			appAction = TextUserInterface::writeAppNoOption();
-			//appAction = enqueueElement();
+			//appAction = TextUserInterface::writeAppNoOption();
+			appAction = enqueueElement();
 			break;
 		case 3:
-			appAction = TextUserInterface::writeAppNoOption();
-			//appAction = dequeueElement();
-			//appAction = printArray();
+			//appAction = TextUserInterface::writeAppNoOption();
+			appAction = dequeueElement();
+			appAction = printArray();
 			break;
 		case 4:
 			appAction = TextUserInterface::writeAppNoOption();
 			break;
 		case 5:
 			appAction = TextUserInterface::writeAppNoOption();
-			//appAction = printArray();
+			appAction = printArray();
 			break;
 		case 6:
 			appAction = TextUserInterface::writeAppNoOption();

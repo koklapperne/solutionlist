@@ -158,7 +158,7 @@ int QueueArrayImplementation::enqueueElement() {
 }
 // Dequeue
 int QueueArrayImplementation::dequeueElement() {
-	// 25-04-2022 18.50
+	// 10-05-2022 13.42
 	// Removing elements from the queue, can only be done at the front
 	// Declarations
 	int appAction;
@@ -180,7 +180,8 @@ int QueueArrayImplementation::dequeueElement() {
 			queueFront = -1;
 		}
 		else {
-			personQueue[queueFront] = emptyPerson;
+			std::cout << personQueue[queueFront].returnName() << " dequeued from the queue" << std::endl;
+			personQueue[queueFront] = emptyPerson; // This might not be correct!
 			queueFront++;
 		}
 		
@@ -219,7 +220,10 @@ int QueueArrayImplementation::printArray() {
 	i = 0;
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
-	// Inspect all elements of the list
+	// Print front and rear
+	std::cout << "Queue Front..: " << queueFront << std::endl;
+	std::cout << "Queue Rear...: " << queueRear << std::endl;
+	// Inspect all elements of the array
 	for (i = 0; i < queueCapacity; i++) {
 		std::cout << i << ": " << personQueue[i].returnName() << std::endl;
 	}
