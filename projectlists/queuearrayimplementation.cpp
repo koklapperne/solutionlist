@@ -10,7 +10,7 @@ const int queueCapacity=10;
 // Global integer variable holding the top of the stack
 int queueRear; // Last element of the queue!
 int queueFront; //  First element of the queue!
-// Global test data structure declaration
+// Global test data declaration
 person testQueuePersons[queueCapacity];
 // Global queue data structure declaration
 person personQueue[queueCapacity];

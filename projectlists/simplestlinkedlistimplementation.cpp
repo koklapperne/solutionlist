@@ -4,17 +4,42 @@
 // Standard library headers
 #include <string>
 #include <iostream>
+// Global test data structure declaration
+std::string testCars[10];
 // Global node data structure
 class simpleNode {
 	std::string carName;
-	// Important! Recursive definition!
+	// Important! Recursive definition! This creates the list nature!
 	simpleNode* next;
 };
+// Testdata
+int SimplestLinkedListImplementation::populateTestCars() {
+	// 21-04-2022 07.35
+	int appAction;
+	appAction = 0;
+	//
+	testCars[0] = "Ford";
+	testCars[1] = "Trabant";
+	testCars[2] = "Suzuky Jinny";
+	testCars[3] = "Land Rover";
+	testCars[4] = "Volks Wagen Caddy";
+	testCars[5] = "Mustang";
+	testCars[6] = "Volvo";
+	testCars[7] = "Farrari";
+	testCars[8] = "Nissan";
+	testCars[9] = "Skoda";
+	//
+	appAction = TextUserInterface::writeSelectionHighlighter();
+	std::cout << "Testdata populated" << std::endl;
+	appAction = TextUserInterface::writeSelectionHighlighter();
+	appAction = TextUserInterface::writeActionSeperator();
+	return 0;
+}
 // Options
 int SimplestLinkedListImplementation::showSimplestLinkedListImplementationOptions() {
 	// 28-04-2022 15.00
 	int appAction = 0;
-	std::cout << "1. #" << std::endl;
+	std::cout << "1. Populate test data" << std::endl;
 	std::cout << "2. #" << std::endl;
 	std::cout << "3. #" << std::endl;
 	std::cout << "4. #" << std::endl;
@@ -44,7 +69,7 @@ int SimplestLinkedListImplementation::handleSimplestLinkedListImplementationOpti
 		// Handle user input
 		switch (choise) {
 		case 1:
-			appAction = TextUserInterface::writeAppNoOption();
+			appAction = SimplestLinkedListImplementation::populateTestCars();
 			break;
 		case 2:
 			appAction = TextUserInterface::writeAppNoOption();
