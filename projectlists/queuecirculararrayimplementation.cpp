@@ -108,10 +108,12 @@ bool QueueCircularArrayImplementation::queueIsEmpty() {
 }
 // Is full
 bool QueueCircularArrayImplementation::queueIsFull() {
-	// 09-05-2022 12.50
+	// 12-05-2022 10.34
 	bool result;
 	//
 	result = false;
+	// if (queueCircularFront == 0 && queueCircularRear == queueCircularCapacity - 1)
+	// if (queueCircularFront == 0 && queueCircularRear == queueCircularCapacity)
 	if (queueCircularFront == 0 && queueCircularRear == queueCircularCapacity - 1) {
 		result = true;
 	}
@@ -123,7 +125,7 @@ bool QueueCircularArrayImplementation::queueIsFull() {
 }
 // Enqueue
 int QueueCircularArrayImplementation::enqueueElement() {
-	// 09-05-2022 18.50
+	// 12-05-2022 10.21
 	// Adding elements to the queue, can only be done at the rear
 	// Declarations
 	int appAction;
@@ -147,9 +149,9 @@ int QueueCircularArrayImplementation::enqueueElement() {
 		if (queueCircularFront == -1) {
 			queueCircularFront = 0;
 		}
-		queueCircularRear = (queueCircularRear+1) % queueCircularCapacity; // IMPORTANT! This results in the circular nature!
 		personQueueCircular[queueCircularRear] = selectedPerson;
 		std::cout << selectedPerson.returnName() << " added to the circular queue" << std::endl;
+		queueCircularRear = (queueCircularRear + 1) % queueCircularCapacity; // IMPORTANT! This results in the circular nature!
 	}
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
