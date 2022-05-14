@@ -13,7 +13,7 @@ int stackTop;
 person testStackPersons[max];
 // Global stack data structure declaration
 person personStack[max];
-// Populate test data
+// Test data
 int StackArrayImplementation::populateTestData() {
 	// 25-04-2022 07.09
 	// Declarations
