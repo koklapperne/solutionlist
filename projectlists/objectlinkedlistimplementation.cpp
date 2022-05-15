@@ -3,8 +3,9 @@
 #include "textuserinterface.h"
 // Standard library headers
 #include <iostream>
+#include <string>
 // Global test data structure declaration
-person linkedListTestPersons[10];
+person testPersons[10];
 // Test data
 int ObjectLinkedListImplementation::populateTestData() {
 	// 14-05-2022 08.31
@@ -15,34 +16,34 @@ int ObjectLinkedListImplementation::populateTestData() {
 	appAction = 0;
 	// 0
 	newTestperson.update("ABE", "Professor", 55);
-	linkedListTestPersons[0] = newTestperson;
+	testPersons[0] = newTestperson;
 	// 1
 	newTestperson.update("TIM", "Student", 21);
-	linkedListTestPersons[1] = newTestperson;
+	testPersons[1] = newTestperson;
 	// 2
 	newTestperson.update("ZOE", "Professor", 21);
-	linkedListTestPersons[2] = newTestperson;
+	testPersons[2] = newTestperson;
 	// 3
 	newTestperson.update("HAL", "Student", 21);
-	linkedListTestPersons[3] = newTestperson;
+	testPersons[3] = newTestperson;
 	// 4
 	newTestperson.update("SAL", "Student", 20);
-	linkedListTestPersons[4] = newTestperson;
+	testPersons[4] = newTestperson;
 	// 5
 	newTestperson.update("MIT", "Teacher", 35);
-	linkedListTestPersons[5] = newTestperson;
+	testPersons[5] = newTestperson;
 	// 6
 	newTestperson.update("ITM", "Student", 21);
-	linkedListTestPersons[6] = newTestperson;
+	testPersons[6] = newTestperson;
 	// 7
 	newTestperson.update("LEO", "Teacher", 32);
-	linkedListTestPersons[7] = newTestperson;
+	testPersons[7] = newTestperson;
 	// 8
 	newTestperson.update("ZED", "Student", 24);
-	linkedListTestPersons[8] = newTestperson;
+	testPersons[8] = newTestperson;
 	// 9
 	newTestperson.update("BEA", "Student", 21);
-	linkedListTestPersons[9] = newTestperson;
+	testPersons[9] = newTestperson;
 	//
 	appAction = TextUserInterface::writeSelectionHighlighter();
 	std::cout << "Test data populated" << std::endl;
@@ -63,7 +64,7 @@ int ObjectLinkedListImplementation::selectPersonFromTestData() {
 	appAction = TextUserInterface::writeSelectionHighlighter();
 	// Inspect all elements of the list
 	for (i = 0; i < 10; i++) {
-		std::cout << i << ": " << linkedListTestPersons[i].returnName() << std::endl;
+		std::cout << i << ": " << testPersons[i].returnName() << std::endl;
 	}
 	//
 	std::cout << "Enter selection: ";
@@ -74,26 +75,92 @@ int ObjectLinkedListImplementation::selectPersonFromTestData() {
 	*/
 	return selection;
 }
-// Add
-int ObjectLinkedListImplementation::addElementFront(node** head, person newPerson) {
-	// 14-05-2022 09.55
+// Add node to front
+int ObjectLinkedListImplementation::addNodetoFront(node** head, person newPerson) {
+	// 15-05-2022 09.15
+	// IMPORTANT! Node declaration is recursive!
+	// IMPORTANT! Nodes are located randomly in heap memory
+	// IMPORTANT! To update the head node the address of the head pointer is needed, resulting in a pointer to a pointer 
 	// Prepare new node
-	// IMPORTANT! head is a pointer to a pointer!
-	// IMPORTANT! parameters are passed as reference!
 	node* newNode = new node();
-	// Put new node in front of current head
-	newNode->m_next = *head;
-	// Move head to the new node
+	newNode->value = newPerson;
+	// Update next of the new node with the old head pointer
+	newNode->next = *head;
+	// Update head pointer of the list with the new node 
 	*head = newNode;
 	//
 	return 0;
-
+}
+// Add node to end
+int ObjectLinkedListImplementation::addNodetoEnd(node** head, person newPerson) {
+	// 15-05-2022 10.16
+	// IMPORTANT! Node declaration is recursive!
+	// IMPORTANT! Nodes are located randomly in heap memory
+	// IMPORTANT! To find the last node the list must be traversed from the head until next=nullptr
+	// Prepare new node
+	node* newNode = new node();
+	newNode->value = newPerson;
+	newNode->next = nullptr;
+	// Find last node
+	node* last = *head;
+	while (last->next != nullptr) {
+		last = last->next;
+	}
+	// Insert node after last node 
+	last->next = newNode;
+	//
+	return 0;
+}
+// Demonstrate
+int ObjectLinkedListImplementation::demonstrateLinkedList() {
+	// 15-05-2022 08.05
+	int appAction;
+	appAction = 0;
+	// Declare nodes
+	node* head = new node();
+	node* second = new node();
+	node* third = new node();
+	node* fourth = new node();
+	node* fifth = new node();
+	// Initialize nodes
+	head->value = testPersons[0];
+	head->next = second;
+	second->value = testPersons[1];
+	second->next = third;
+	third->value = testPersons[2];
+	third->next = fourth;
+	fourth->value = testPersons[3];
+	fourth->next = fifth;
+	fifth->value = testPersons[4];
+	fifth->next = nullptr;
+	// Add new nodes to the front
+	addNodetoFront(&head, testPersons[8]);
+	addNodetoFront(&head, testPersons[8]);
+	addNodetoFront(&head, testPersons[8]);
+	// Add new nodes to the end
+	addNodetoEnd(&head, testPersons[9]);
+	addNodetoEnd(&head, testPersons[9]);
+	addNodetoEnd(&head, testPersons[9]);
+	// Print linked list
+	printList(head);
+	// Clean up memory
+	// IMPORTANT! Reverse order deletion!
+	delete fifth;
+	delete fourth;
+	delete third;
+	delete second;
+	delete head;
+	// 
+	appAction = TextUserInterface::writeActionSeperator();
+	return 0;
+	return 0;
 }
 // Print
 int ObjectLinkedListImplementation::printList(node* n) {
-	// 14-05-2022 10.16
+	// 15-05-2022 08.43
 	while (n != nullptr) {
-		std::cout << n->m_value.returnName() << std::endl;
+		std::cout << n->value.returnName() << std::endl;
+		n = n->next;
 	}
 	//
 	return 0;
@@ -103,11 +170,11 @@ int ObjectLinkedListImplementation::showOptions() {
 	// 14-05-2022 08.09
 	int appAction = 0;
 	std::cout << "1. Popultate test data" << std::endl;
-	std::cout << "2. Add element at the front" << std::endl;
-	std::cout << "3. Add element at the rear" << std::endl;
-	std::cout << "4. Add element at arbitrary position " << std::endl;
-	std::cout << "5. # " << std::endl;
-	std::cout << "6. Print list" << std::endl;
+	std::cout << "2. Demonstrate linked list" << std::endl;
+	std::cout << "3. #" << std::endl;
+	std::cout << "4. #" << std::endl;
+	std::cout << "5. #" << std::endl;
+	std::cout << "6. #" << std::endl;
 	std::cout << "7. #" << std::endl;
 	std::cout << "8. #" << std::endl;
 	std::cout << "9. #" << std::endl;
@@ -120,8 +187,6 @@ int ObjectLinkedListImplementation::handleOptions() {
 	int appAction = 0;
 	int choise = 99;
 	bool stop = false;
-	// IMPORTANT! Declare the head of the linked list here to ensure the scope!
-	node* head = new node();
 	// Operations 
 	while (stop == false) {
 		appAction = TextUserInterface::writeSubFunctionalityInformation("--Object linked list implimentation--", "V.00.01");
@@ -134,28 +199,22 @@ int ObjectLinkedListImplementation::handleOptions() {
 		// Handle user input
 		switch (choise) {
 		case 1:
-			appAction = TextUserInterface::writeAppNoOption();
-			//appAction = ObjectArrayImplementation::populateList();
+			appAction = populateTestData();
 			break;
 		case 2:
-			appAction = TextUserInterface::writeAppNoOption();
-			//appAction = findElement();
+			appAction = demonstrateLinkedList();
 			break;
 		case 3:
 			appAction = TextUserInterface::writeAppNoOption();
-			//appAction = modifyElement();
 			break;
 		case 4:
 			appAction = TextUserInterface::writeAppNoOption();
-			//appAction = addElement();
 			break;
 		case 5:
 			appAction = TextUserInterface::writeAppNoOption();
-			//appAction = deleteElement();
 			break;
 		case 6:
 			appAction = TextUserInterface::writeAppNoOption();
-			//appAction = printList();
 			break;
 		case 7:
 			appAction = TextUserInterface::writeAppNoOption();
@@ -176,7 +235,7 @@ int ObjectLinkedListImplementation::handleOptions() {
 		}
 	}
 	// IMPORTANT! Clean up memory
-	delete head;
+
 	//
 	return 0;
 }

@@ -12,12 +12,12 @@ namespace SimplestLinkedListImplementation{
 	};
 	// Function declarations
 	// Test data
-	int populateTestCars();
+	int populateTestData();
 	// Print
-	int printLinkedList(node* n);
-	// Populate 
-	int populateLinkedList();
+	int printList(node* n);
+	// Demonstrate 
+	int demonstrateLinkedList();
 	// Options
-	int showSimplestLinkedListImplementationOptions();
-	int handleSimplestLinkedListImplementationOptions();
+	int showOptions();
+	int handleOptions();
 }

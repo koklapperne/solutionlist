@@ -1,6 +1,7 @@
 // Local headers
 #include "linkedlistimplementation.h"
 #include "simplestlinkedlistimplementation.h"
+#include "objectlinkedlistimplementation.h"
 #include "textuserinterface.h"
 #include "person.h"
 // Standard library headers
@@ -24,7 +25,7 @@ int showLinkedListImplementationOptions(){
 	return 0;
 }
 int handleLinkedListImplementationOptions() {
-	// 12-05-2022 15.36
+	// 15-05-2022 08.32
 	int appAction = 0;
 	int choise = 99;
 	bool stop = false;
@@ -40,10 +41,10 @@ int handleLinkedListImplementationOptions() {
 		// Handle user input
 		switch (choise) {
 		case 1:
-			appAction = SimplestLinkedListImplementation::handleSimplestLinkedListImplementationOptions();
+			appAction = SimplestLinkedListImplementation::handleOptions();
 			break;
 		case 2:
-			appAction = TextUserInterface::writeAppNoOption();
+			appAction = ObjectLinkedListImplementation::handleOptions();
 			break;
 		case 3:
 			appAction = TextUserInterface::writeAppNoOption();

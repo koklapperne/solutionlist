@@ -141,7 +141,6 @@
   <ItemGroup>
     <ClCompile Include="arrayimplimentation.cpp" />
     <ClCompile Include="linkedlistimplementation.cpp" />
-    <ClCompile Include="node.cpp" />
     <ClCompile Include="objectarrayimplimentation.cpp" />
     <ClCompile Include="objectlinkedlistimplementation.cpp" />
     <ClCompile Include="person.cpp" />
@@ -157,7 +156,6 @@
   <ItemGroup>
     <ClInclude Include="arrayimplimentation.h" />
     <ClInclude Include="linkedlistimplementation.h" />
-    <ClInclude Include="node.h" />
     <ClInclude Include="objectarrayimplimentation.h" />
     <ClInclude Include="objectlinkedlistimplementation.h" />
     <ClInclude Include="person.h" />

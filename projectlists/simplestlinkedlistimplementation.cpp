@@ -6,7 +6,7 @@
 // Global test data structure declaration
 std::string testCars[10];
 // Testdata
-int SimplestLinkedListImplementation::populateTestCars() {
+int SimplestLinkedListImplementation::populateTestData() {
 	// 21-04-2022 07.35
 	int appAction;
 	appAction = 0;
@@ -29,7 +29,7 @@ int SimplestLinkedListImplementation::populateTestCars() {
 	return 0;
 }
 // Populate
-int SimplestLinkedListImplementation::populateLinkedList() {
+int SimplestLinkedListImplementation::demonstrateLinkedList() {
 	// 13-05-2022 08.04
 	int appAction;
 	appAction = 0;
@@ -51,7 +51,7 @@ int SimplestLinkedListImplementation::populateLinkedList() {
 	fifth->carName = testCars[4];
 	fifth->next = nullptr;
 	// Print linked list
-	printLinkedList(head);
+	printList(head);
 	// Clean up memory
 	// IMPORTANT! Reverse order deletion!
 	delete fifth;
@@ -64,7 +64,7 @@ int SimplestLinkedListImplementation::populateLinkedList() {
 	return 0;
 }
 // Print
-int SimplestLinkedListImplementation::printLinkedList(node* n) {
+int SimplestLinkedListImplementation::printList(node* n) {
 	// 13-05-2022 08.54
 	while (n != nullptr) {
 		std::cout << n->carName << std::endl;
@@ -74,31 +74,31 @@ int SimplestLinkedListImplementation::printLinkedList(node* n) {
 	return 0;
 }
 // Options
-int SimplestLinkedListImplementation::showSimplestLinkedListImplementationOptions() {
-	// 28-04-2022 15.00
+int SimplestLinkedListImplementation::showOptions() {
+	// 15-05-2022 08.58
 	int appAction = 0;
 	std::cout << "1. Populate test data" << std::endl;
-	std::cout << "2. Populate linked list" << std::endl;
-	std::cout << "3. Find node" << std::endl;
-	std::cout << "4. Modify node" << std::endl;
-	std::cout << "5. Add node" << std::endl;
-	std::cout << "6. Delete node" << std::endl;
-	std::cout << "7. Print linked list" << std::endl;
+	std::cout << "2. Demonstrate linked list" << std::endl;
+	std::cout << "3. #" << std::endl;
+	std::cout << "4. #" << std::endl;
+	std::cout << "5. #" << std::endl;
+	std::cout << "6. #" << std::endl;
+	std::cout << "7. #" << std::endl;
 	std::cout << "8. #" << std::endl;
 	std::cout << "9. #" << std::endl;
 	std::cout << "0. Exit" << std::endl;
 	//
 	return 0;
 }
-int SimplestLinkedListImplementation::handleSimplestLinkedListImplementationOptions() {
-	// 13-05-2022 09.23
+int SimplestLinkedListImplementation::handleOptions() {
+	// 15-05-2022 08.46
 	int appAction = 0;
 	int choise = 99;
 	bool stop = false;
 	// Operations 
 	while (stop == false) {
 		appAction = TextUserInterface::writeSubFunctionalityInformation("--Simplest linked List implementation--", "V.00.01");
-		appAction = showSimplestLinkedListImplementationOptions();
+		appAction = showOptions();
 		appAction = TextUserInterface::writeActionSeperator();
 		std::cout << "Enter choise: ";
 		std::cin >> choise;
@@ -107,10 +107,10 @@ int SimplestLinkedListImplementation::handleSimplestLinkedListImplementationOpti
 		// Handle user input
 		switch (choise) {
 		case 1:
-			appAction = populateTestCars();
+			appAction = populateTestData();
 			break;
 		case 2:
-			appAction = populateLinkedList();
+			appAction = demonstrateLinkedList();
 			break;
 		case 3:
 			appAction = TextUserInterface::writeAppNoOption();

@@ -1,33 +1,28 @@
 #pragma once
 // Local headers
 #include "person.h"
-#include "node.h"
-// Standard library headers
-#include <string>
 // Namespace declaration
 namespace ObjectLinkedListImplementation {
+	// Node data structure declaration
+	class node {
+	public:
+		person value;
+		// Important! Recursive definition! This creates the linking!
+		node* next;
+	};
 	// Function declarations
 	// Test data
 	int populateTestData();
 	int selectPersonFromTestData();
-	// Add
-	int addElementFront(node** head, person newPerson);
+	// Add node to front
+	int addNodetoFront(node** head, person newPerson);
+	// Add node to end
+	int addNodetoEnd(node** head, person newPerson);
+	// Demonstrate
+	int demonstrateLinkedList();
 	// Print
 	int printList(node* n);
-	/*
-	// Populate
-	int populateList();
-	// Find
-	int findElement();
-	// Modify
-	int modifyElement();
-	// Add
-	int addElementAtFront();
-	// Delete
-	int deleteElement();
-	
 	// Options
-	*/
 	int showOptions();
 	int handleOptions();
 }
