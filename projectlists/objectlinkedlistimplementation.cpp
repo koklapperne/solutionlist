@@ -76,7 +76,7 @@ int ObjectLinkedListImplementation::selectPersonFromTestData() {
 	return selection;
 }
 // Add node to front
-int ObjectLinkedListImplementation::addNodetoFront(node** head, person newPerson) {
+int ObjectLinkedListImplementation::addNodeToFront(node** head, person newPerson) {
 	// 15-05-2022 09.15
 	// IMPORTANT! Node declaration is recursive!
 	// IMPORTANT! Nodes are located randomly in heap memory
@@ -92,8 +92,8 @@ int ObjectLinkedListImplementation::addNodetoFront(node** head, person newPerson
 	return 0;
 }
 // Add node to end
-int ObjectLinkedListImplementation::addNodetoEnd(node** head, person newPerson) {
-	// 15-05-2022 10.16
+int ObjectLinkedListImplementation::addNodeToEnd(node** head, person newPerson) {
+	// 15-05-2022 17.12
 	// IMPORTANT! Node declaration is recursive!
 	// IMPORTANT! Nodes are located randomly in heap memory
 	// IMPORTANT! To find the last node the list must be traversed from the head until next=nullptr
@@ -101,13 +101,59 @@ int ObjectLinkedListImplementation::addNodetoEnd(node** head, person newPerson) 
 	node* newNode = new node();
 	newNode->value = newPerson;
 	newNode->next = nullptr;
-	// Find last node
-	node* last = *head;
-	while (last->next != nullptr) {
-		last = last->next;
+	// If list is empty, head will be newNode
+	if (*head == nullptr) {
+		*head = newNode;
 	}
-	// Insert node after last node 
-	last->next = newNode;
+	else {
+		// Find last node
+		node* last = *head;
+		while (last->next != nullptr) {
+			last = last->next;
+		}
+		// Insert node after last node 
+		last->next = newNode;
+	}
+	//
+	return 0;
+}
+// add node after a node
+int ObjectLinkedListImplementation::addNodeAfter(node* privious, person newPerson) {
+	// 15-05-2022 17.12
+	// IMPORTANT! Node declaration is recursive!
+	// IMPORTANT! Nodes are located randomly in heap memory
+	// Check if privious node is end node
+	if (privious == nullptr) {
+		std::cout << "Privoius can not be nullptr" << std::endl;
+	}
+	else {
+		// Prepare new node
+		node* newNode = new node();
+		newNode->value = newPerson;
+		// Insert new node after privious
+		newNode->next = privious->next;
+		privious->next = newNode;
+	}
+	//
+	return 0;
+}
+// Delete linked list
+int ObjectLinkedListImplementation::deleteLinkedList(node** head) {
+	// 15-05-2022 18.02
+	node* currentNode;
+	node* nextNode;
+	//
+	currentNode = *head;
+	// Travers the list
+	while (currentNode != nullptr) {
+		std::cout << currentNode->value.returnName() << " deleted from the link list" << std::endl;
+		// Get the next node
+		nextNode = currentNode->next;
+		// Delete current node
+		delete(currentNode);
+		// Set the next node to be the current node
+		currentNode = nextNode;
+	}
 	//
 	return 0;
 }
@@ -134,26 +180,26 @@ int ObjectLinkedListImplementation::demonstrateLinkedList() {
 	fifth->value = testPersons[4];
 	fifth->next = nullptr;
 	// Add new nodes to the front
-	addNodetoFront(&head, testPersons[8]);
-	addNodetoFront(&head, testPersons[8]);
-	addNodetoFront(&head, testPersons[8]);
+	addNodeToFront(&head, testPersons[8]);
+	addNodeToFront(&head, testPersons[8]);
+	addNodeToFront(&head, testPersons[8]);
 	// Add new nodes to the end
-	addNodetoEnd(&head, testPersons[9]);
-	addNodetoEnd(&head, testPersons[9]);
-	addNodetoEnd(&head, testPersons[9]);
+	addNodeToEnd(&head, testPersons[9]);
+	addNodeToEnd(&head, testPersons[9]);
+	addNodeToEnd(&head, testPersons[9]);
+	// add new node after second
+	addNodeAfter(second, testPersons[5]);
+	addNodeAfter(second, testPersons[5]);
+	addNodeAfter(second, testPersons[5]);
+
 	// Print linked list
 	printList(head);
 	// Clean up memory
-	// IMPORTANT! Reverse order deletion!
-	delete fifth;
-	delete fourth;
-	delete third;
-	delete second;
-	delete head;
+	appAction = deleteLinkedList(&head);
 	// 
 	appAction = TextUserInterface::writeActionSeperator();
 	return 0;
-	return 0;
+	
 }
 // Print
 int ObjectLinkedListImplementation::printList(node* n) {

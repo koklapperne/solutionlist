@@ -15,11 +15,16 @@ namespace ObjectLinkedListImplementation {
 	int populateTestData();
 	int selectPersonFromTestData();
 	// Add node to front
-	int addNodetoFront(node** head, person newPerson);
+	int addNodeToFront(node** head, person newPerson);
 	// Add node to end
-	int addNodetoEnd(node** head, person newPerson);
+	int addNodeToEnd(node** head, person newPerson);
+	// Add node to any position
+	int addNodeAfter(node* head, person newPerson);
+	// Delete linked list node by node
+	int deleteLinkedList(node** head);
 	// Demonstrate
 	int demonstrateLinkedList();
+
 	// Print
 	int printList(node* n);
 	// Options
